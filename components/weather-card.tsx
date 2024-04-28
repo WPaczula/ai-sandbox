@@ -26,7 +26,7 @@ export function WeatherCard({ info }: Props) {
                 width={24}
               />
               <div>
-                <span className="pr-4 text-4xl font-bold text-gray-800">
+                <span className="pr-4 text-4xl font-bold text-gray-200">
                   {info.current.temp_c}°C
                 </span>
                 <span className="text-lg text-gray-500">

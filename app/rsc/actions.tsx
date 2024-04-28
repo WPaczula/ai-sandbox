@@ -1,11 +1,12 @@
 import { OpenAI } from 'openai'
 import { getMutableAIState, render } from 'ai/rsc'
 import { z } from 'zod'
-import { fetchWeather } from './api/external/fetchWeather'
+import { fetchWeather } from '../api/external/fetchWeather'
 import { AI } from './AI'
 import { WeatherCard } from '@/components/weather-card'
 import { Message } from '@/lib/message'
 import { Spinner } from '@/components/spinner'
+import { v4 as uuidv4 } from 'uuid'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -90,7 +91,7 @@ async function submitUserMessage(userInput: string): Promise<Message> {
   })
 
   return {
-    id: Date.now(),
+    id: uuidv4(),
     createdAt: new Date(),
     ui,
   }

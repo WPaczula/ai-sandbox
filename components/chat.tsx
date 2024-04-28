@@ -8,14 +8,19 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { MessageBox } from './message-box'
 import { Message } from '@/lib/message'
+import { ChangeEventHandler } from 'react'
 
 type Props = {
   messages: Array<Message>
   inputValue: string
-  setInputValue: (value: string) => void
+  onInputChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export function Chat({ messages, inputValue, setInputValue }: Props) {
+export function Chat({
+  messages,
+  inputValue,
+  onInputChange: onInputChange,
+}: Props) {
   return (
     <div className="flex h-full w-full flex-col rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-950 dark:border-gray-800">
       <div className="flex-1 overflow-y-auto">
@@ -35,7 +40,7 @@ export function Chat({ messages, inputValue, setInputValue }: Props) {
           placeholder="Type your message..."
           type="text"
           value={inputValue}
-          onChange={(e) => setInputValue(e.currentTarget.value)}
+          onChange={onInputChange}
         />
         <Button type="submit">Send</Button>
       </div>

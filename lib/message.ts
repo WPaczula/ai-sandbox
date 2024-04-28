@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 export type Message = {
-  id: number
+  id: string
   ui: ReactNode
   createdAt: Date
 }
