@@ -29,14 +29,7 @@ async function submitUserMessage(userInput: string): Promise<Message> {
   const ui = render({
     model: 'gpt-4-0125-preview',
     provider: openai,
-    messages: [
-      {
-        role: 'system',
-        content:
-          'You are an assistant knowing the weather in Poland. If the area is not located in Poland say that you do not know. If there is any question not related to the weather, say you only speak about the weather.',
-      },
-      ...aiState.get(),
-    ],
+    messages: aiState.get(),
     // `text` is called when an AI returns a text response (as opposed to a tool call).
     // Its content is streamed from the LLM, so this function will be called
     // multiple times with `content` being incremental.
